@@ -1,0 +1,155 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-1",
+      "fullName": "Usman (Admin)",
+      "email": "tzkusman786@gmail.com",
+      "role": "ADMIN",
+      "isActive": true,
+      "createdAt": "2026-10-12T11:19:22.846Z"
+    },
+    {
+      "id": "usr-manager-2",
+      "fullName": "Rashid Khan (Floor Manager)",
+      "email": "manager@denimcrafts.com",
+      "role": "MANAGER",
+      "isActive": true,
+      "createdAt": "2026-10-12T11:19:22.846Z"
+    },
+    {
+      "id": "usr-merch-3",
+      "fullName": "Bilal Ahmed (Merchandiser)",
+      "email": "merch@denimcrafts.com",
+      "role": "MERCHANDISER",
+      "isActive": true,
+      "createdAt": "2026-10-12T11:19:22.846Z"
+    }
+  ],
+  "challans": [
+    {
+      "id": "dc-6532",
+      "dcNo": "6532",
+      "openDate": "2026-10-12",
+      "openingQty": 5000,
+      "party": "line 1",
+      "article": "",
+      "remarks": "",
+      "status": "OPEN",
+      "closedDate": null,
+      "voidReason": null,
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T09:56:52.950437+00:00",
+      "updatedAt": "2026-10-12T09:56:52.950437+00:00"
+    },
+    {
+      "id": "dc-8986",
+      "dcNo": "8986",
+      "openDate": "2026-10-12",
+      "openingQty": 10000,
+      "party": "line 1",
+      "article": "",
+      "remarks": "",
+      "status": "OPEN",
+      "closedDate": null,
+      "voidReason": null,
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T09:57:58.069732+00:00",
+      "updatedAt": "2026-10-12T09:57:58.069732+00:00"
+    },
+    {
+      "id": "dc-96986",
+      "dcNo": "96986",
+      "openDate": "2026-10-09",
+      "openingQty": 5000,
+      "party": "",
+      "article": "",
+      "remarks": "",
+      "status": "OPEN",
+      "closedDate": null,
+      "voidReason": null,
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T10:44:11.342933+00:00",
+      "updatedAt": "2026-10-12T10:44:11.342933+00:00"
+    },
+    {
+      "id": "dc-9693",
+      "dcNo": "9693",
+      "openDate": "2026-10-09",
+      "openingQty": 8000,
+      "party": "line 1",
+      "article": "",
+      "remarks": "",
+      "status": "OPEN",
+      "closedDate": null,
+      "voidReason": null,
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T10:45:17.773319+00:00",
+      "updatedAt": "2026-10-12T10:45:17.773319+00:00"
+    }
+  ],
+  "entries": [
+    {
+      "id": "ent-1791799046129-46",
+      "challanId": "dc-6532",
+      "entryDate": "2026-10-12",
+      "type": "OUT",
+      "qty": 500,
+      "note": "",
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T09:57:26.27189+00:00",
+      "updatedAt": "2026-10-12T09:57:26.27189+00:00",
+      "deletedAt": null
+    },
+    {
+      "id": "ent-1791799144895-810",
+      "challanId": "dc-8986",
+      "entryDate": "2026-10-12",
+      "type": "OUT",
+      "qty": 500,
+      "note": "",
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T09:59:05.270321+00:00",
+      "updatedAt": "2026-10-12T09:59:05.270321+00:00",
+      "deletedAt": null
+    },
+    {
+      "id": "ent-1791801894358-326",
+      "challanId": "dc-96986",
+      "entryDate": "2026-10-09",
+      "type": "OUT",
+      "qty": 500,
+      "note": "",
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T10:44:54.488617+00:00",
+      "updatedAt": "2026-10-12T10:44:54.488617+00:00",
+      "deletedAt": null
+    },
+    {
+      "id": "ent-1791801979594-176",
+      "challanId": "dc-9693",
+      "entryDate": "2026-10-12",
+      "type": "OUT",
+      "qty": 1000,
+      "note": "",
+      "createdById": "usr-admin-1",
+      "createdByName": "Operator",
+      "createdAt": "2026-10-12T10:46:20.067504+00:00",
+      "updatedAt": "2026-10-12T10:46:20.067504+00:00",
+      "deletedAt": null
+    }
+  ],
+  "auditLogs": [],
+  "settings": {
+    "staleDays": 5,
+    "companyName": "Denim Crafts",
+    "karachiTimezone": "Asia/Karachi"
+  },
+  "currentUserId": "usr-admin-1"
+}

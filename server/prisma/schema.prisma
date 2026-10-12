@@ -1,0 +1,124 @@
+// Prisma schema for EYE - Denim Crafts Production Monitoring System
+// Supabase PostgreSQL with PgBouncer connection pooling and direct connection for migrations
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // Transaction pooled port 6543 (pgbouncer=true)
+  directUrl = env("DIRECT_URL")   // Direct port 5432 for migrations
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  MERCHANDISER
+}
+
+enum ChallanStatus {
+  OPEN
+  CLOSED
+  VOID
+}
+
+enum EntryType {
+  IN
+  OUT
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  VOID
+  REOPEN
+  SETTINGS
+}
+
+model Profile {
+  id        String    @id // Maps to Supabase auth.users.id
+  fullName  String
+  email     String    @unique
+  role      Role      @default(MERCHANDISER)
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  challans  Challan[]
+  entries   Entry[]
+  auditLogs AuditLog[]
+
+  @@map("profiles")
+}
+
+model Challan {
+  id          String        @id @default(uuid())
+  dcNo        String        @unique // Immutable once created, guarded by trigger & API
+  openDate    DateTime      @db.Date
+  openingQty  Int
+  party       String?
+  article     String?
+  remarks     String?
+  status      ChallanStatus @default(OPEN)
+  closedDate  DateTime?     @db.Date
+  voidReason  String?
+  createdById String
+  createdBy   Profile       @relation(fields: [createdById], references: [id])
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  entries     Entry[]
+
+  @@index([dcNo])
+  @@index([status])
+  @@index([openDate])
+  @@map("challans")
+}
+
+model Entry {
+  id          String    @id @default(uuid())
+  challanId   String
+  challan     Challan   @relation(fields: [challanId], references: [id], onDelete: Cascade)
+  entryDate   DateTime  @db.Date
+  type        EntryType
+  qty         Int
+  note        String?
+  createdById String
+  createdBy   Profile   @relation(fields: [createdById], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime? // Soft delete: records are never hard-deleted
+
+  @@index([challanId, entryDate])
+  @@index([entryDate])
+  @@map("entries")
+}
+
+model AuditLog {
+  id        String      @id @default(uuid())
+  userId    String
+  user      Profile     @relation(fields: [userId], references: [id])
+  action    AuditAction
+  entity    String      // CHALLAN, ENTRY, USER, SETTING
+  entityId  String
+  oldValue  Json?
+  newValue  Json?
+  reason    String?
+  ip        String?
+  createdAt DateTime    @default(now())
+
+  @@index([createdAt])
+  @@index([entity, entityId])
+  @@map("audit_logs")
+}
+
+model Setting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("settings")
+}

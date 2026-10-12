@@ -1,0 +1,6 @@
+{
+  "name": "EYE – Denim Crafts Production Monitor",
+  "description": "Production monitoring web app for Denim Crafts Karachi, tracking DCs (DC No), date-wise IN/OUT garment movements, running balances, and production gaps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
